@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html lang="pt_BR">
+<head>
+	<meta charset = "utf-8" />
+	<link rel="stylesheet" href="css/style.css" />
+	<style type="text/css">
+	form{
+		font-size: 13px;
+		margin: 0px auto;
+		padding: 10px 0px;
+		width: 400px;
+	}
+	form label{
+		display: block;
+		margin-bottom: 2px;
+	}
+	form input[type=text], form select{
+		border: solid 1px #333;
+		height: 20px;
+		line-height: 20px;
+		width: 50%;
+	}
+	form input[type=submit]{
+		background: #000;
+		color: #fff;
+		cursor: pointer;
+		padding: 5px 10px;
+	}
+	form input[type=submit]:hover{
+		background: #222;
+	}
+	form .row{
+		margin-bottom: 10px;
+	}
+	form .msg-error{
+		color: #ff0000;
+		padding: 3px 0px;
+	}
+	</style>
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src='js/jquery-wmvf-min-1.0.js'></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.form_test').wmvf({
+				btn_submit        : '.btn_send',
+				msg_error         : '.msg-error',
+				checkboxes_radios : 'check,radio',
+				class_error       : 'custom_error',
+		        confirm           : 'cod_conf',
+		        custom            : {
+		            'custom': {'reg':/^\d+$/, 'msg':'Campo inválido! teste 2'}
+		        },
+		        messages          : {required:'Não é permitido valor vazio!'}
+			});
+		});
+	</script>
+
+	<!--[if lt IE 9]>
+	     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<title>WM Valid Form</title>
+</head>
+
+<body>
+	<header class='head' >
+		<h1>WM Valid Form</h1>
+	</header><!-- header.head -->
+
+	<section class='main' >
+
+		<form name='' action='#' method='post' class='form_test' >
+			<div class='row' >	
+				<label for='name' >Nome:</label>
+				<input type='text' name='name' id='name' class='required' /> 
+				<div class='msg-error'></div>
+			</div>
+			<div class='row' >	
+				<label for='email' >Email</label>
+				<input type='text' name='email' id='email' class='email' /> 
+				<div class='msg-error'></div>
+			</div>
+			<div class='row' >	
+				<label for='int' >Inteiro</label>
+				<input type='text' name='int' id='int' class='numeric' /> 
+				<div class='msg-error'></div>
+			</div>
+			<div class='row' >	
+				<label for='cpf' >CPF</label>
+				<input type='text' name='cpf' id='cpf' class='cpf' /> 
+				<div class='msg-error'></div>
+			</div>
+			<div class='row' >	
+				<label for='custom' >Custom</label>
+				<input type='text' name='custom' id='custom' class='custom' rel='^\d+$' /> 
+				<div class='msg-error'></div>
+			</div>
+			<div class='row' >	
+				<label for='max' >Max</label>
+				<input type='text' name='max' id='max' class='maxlength' rel='6' /> 
+				<div class='msg-error'></div>
+			</div>
+			<div class='row' >	
+				<label for='min' >Min</label>
+				<input type='text' name='min' id='min' class='minlength' rel='2' /> 
+				<div class='msg-error'></div>
+			</div>
+			<div class='row' >	
+				<label for='between' >Between</label>
+				<input type='text' name='between' id='between' class='between' rel='3,6' /> 
+				<div class='msg-error'></div>
+			</div>
+			<div class='row' >	
+				<label for='confirm' >Confirm</label>
+				<input type='text' name='confirm' id='confirm' class='confirm' rel='cod_conf' /> 
+				<div class='msg-error'></div>
+			</div>
+			<div class='row' >	
+				<label for='confirm2' >Confirm2</label>
+				<input type='text' name='confirm2' id='confirm2' class='confirm' rel='cod_conf' />
+				<div class='msg-error'></div>
+			</div>
+			<div class='row' >
+				<label for='sel'>Selecione</label>
+				<select name='sel' id='sel' class='required' >
+					<option value=''>Selecione</option>
+					<option value='Opt 1'>Opt 1</option>
+					<option value='Opt 2'>Opt 2</option>
+					<option value='Opt 3'>Opt 3</option>
+				</select>
+				<div class='msg-error'></div>
+			</div>
+			<div class='row'>
+				<label for='check1'>Check 1</label>
+				<input type='checkbox' name='check' value='' id='check1' class='required' />
+				<label for='check2'>Check 2</label>
+				<input type='checkbox' name='check' value='' id='check2' class='required' />
+				<div class='msg-error'></div>
+			</div>
+			<div class='row'>
+				<label for='radio1'>Radio 1</label>
+				<input type='radio' name='radio' value='' id='radio1' class='required' />
+				<label for='radio2'>Radio 2</label>
+				<input type='radio' name='radio' value='' id='radio2' class='required' />
+				<div class='msg-error'></div>
+			</div>
+			<div class='row' >
+				<label for='file'>File</label>
+				<input type='file' name='file' id='file' class='required file' rel='jpg,txt,pdf,png' />
+				<div class='msg-error'></div>
+			</div>
+			<div class='row last'>
+				<input type='submit' value='Enviar' class='btn_send' />
+			</div>
+		</form>
+
+	</section><!-- section.main -->
+
+	<footer class='foot' >
+		<p>
+			Desenvolvido por <strong>Welison Menezes</strong> || Contato: <em>welisonmenezes@gmail.com</em>
+		</p>
+	</footer><!-- footer.foot -->
+</body>
+</html>
